@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import unicodedata
 import os 
+import gradio as gr
+from dotenv import load_dotenv 
 import sqlite3
 
 url = 'https://www.worldometers.info/world-population/population-by-country/'
@@ -97,7 +99,14 @@ df1.info()
 
 
 base_url = "https://api.weatherapi.com/v1/forecast.json"
-api_key = "65fefb84f94a49e6ace173242251008"  
+load_dotenv()
+
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
+if not WEATHER_API_KEY:
+    print("Warning: WEATHER_API_KEY not found in environment variables.")
+    print("Please create a .env file with your WEATHER_API_KEY.")
+
+
 
 def get_weatherdata(df1):
     rows = []
@@ -106,7 +115,7 @@ def get_weatherdata(df1):
 
         r = requests.get(
             base_url, 
-            params={"key": api_key, "q": country, "days": 1, "aqi": "no", "alerts": "no"},
+            params={"key": WEATHER_API_KEY, "q": country, "days": 1, "aqi": "no", "alerts": "no"},
             timeout = 20
         )
         data = r.json()
