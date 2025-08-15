@@ -87,10 +87,13 @@ saving_data = {
 }
 
 df1 = pd.DataFrame(saving_data)
+df1.to_csv("df1.csv", index=False)
 
 df1.head()
 
 df1.describe()
 
 df1.info()
+
+
 
