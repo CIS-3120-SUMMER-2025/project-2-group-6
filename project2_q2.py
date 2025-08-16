@@ -10,9 +10,11 @@ Original file is located at
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import matplotlib.pyplot as plt
 import urllib3
 import math
 import numpy as np
+import os
 
 # Set the URLs for vollyball team and swimming team
 volleyball_teams = {
@@ -254,3 +256,23 @@ print(women_vball.nlargest(5, "height_in"))
 print("Shortest Women Volleyball Players:")
 print(women_vball.nsmallest(5, "height_in"))
 
+ms = pd.read_csv("men_swimming.csv")
+mv = pd.read_csv("men_volleyball.csv")
+ws = pd.read_csv("women_swimming.csv")
+wv = pd.read_csv("women_volleyball.csv")
+
+avg_ms = ms["height_in"].mean()
+avg_mv = mv["height_in"].mean()
+avg_ws = ws["height_in"].mean()
+avg_wv = wv["height_in"].mean()
+
+labels = ["Men Swim","Men Vball","Women Swim","Women Vball"]
+vals = [avg_ms, avg_mv, avg_ws, avg_wv]
+
+plt.bar(labels, vals)
+plt.ylabel("Average height (inches)")
+plt.title("Average Athlete Height by Group")
+plt.tight_layout()
+plt.savefig("analysis/figs/avg_heights_bar.png", dpi=200)
+plt.close()
+plt.savefig("avg_heights_bar.png")
