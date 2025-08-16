@@ -137,6 +137,9 @@ def get_weatherdata(df1):
     return pd.DataFrame(rows)
 
 df2 = get_weatherdata(df1)
+df2 = get_weatherdata(df1)
+os.makedirs('data', exist_ok=True)
+df2.to_csv("data/df2.csv", index=False)
 
 print(df2)
 df3 = df1.merge(df2, on="Country", how="left")
