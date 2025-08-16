@@ -1,16 +1,17 @@
 # project-2-group-6
-Contributor: Ian
+By: Ian
 
-Task
-	•	Scraped a table with at least 30 rows (most populated cities).
-	•	Cleaned the data and stored it in DF1.
-	•	Exported DF1 as a CSV file.
+Done
+	•	Picked a table with 30+ rows (most populated cities).
+	•	Scraped it with Python.
+	•	Cleaned it up a little.
+	•	Saved it into DF1.csv.
 
-Deliverables
-	•	DF1.csv – cleaned dataset from the scraped table.
-	•	scraping/ folder contains the scraping code used.
+Files
+	•	DF1.csv – cleaned dataset.
+	•	project_q1_scraping.py – code used to scrape.
 
 Notes
-	•	Data was scraped using Python (BeautifulSoup, pandas).
-	•	Only minimal cleaning was required (removing null values and formatting).
-	•	The CSV is ready for use in the API and merging steps in later parts of the project.
+	•	Used BeautifulSoup and pandas.
+	•	Data is ready for the next step (API + merge).
+
